@@ -1,35 +1,51 @@
 package net.frankium.sunwaydiit.assignment.Assignment2Q3;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Patient extends Person {
-	String id;
-	int age;
-	Date dob, admittedDate, dischargedDate;
-	Doctor physician;
-	
-	public Patient(String firstName, String lastName, String ID, Date DOB, Date admittedDate, Date dischargedDate) {
+	private String id;
+	private Date DOB, admittedDate, dischargedDate;
+	private Doctor physician;
+	public Patient(String firstName, String lastName,Date DOB ,String ID, Date admittedDate, Date dischargedDate, Doctor physician) {
 		super(firstName, lastName);
+		setPhysician(physician);
 		setId(ID);
-		setDob(DOB);
+		setDOB(DOB);
 		setAdmittedDate(admittedDate);
 		setDischargedDate(dischargedDate);
 	}
+	
+	public String toString(){
+        return "Patient: " + super.toString() + "\n"
+               + "Attending Physician: " + physician.toString()
+               + "\n" + "Admit Date: " + admittedDate.toString()
+               + "\n" + "Discharge Date: " +  dischargedDate.toString()
+               + "\n";
+    }
 	
 	//setters getters
 	public void setPhysician(Doctor physician){ this.physician = physician; }
 	public void setId(String id){ this.id = id; }
 	public void setAdmittedDate(Date admittedDate){ this.admittedDate = admittedDate; }
 	public void setDischargedDate(Date dischargedDate){ this.dischargedDate = dischargedDate; }
-	public void setDob(Date dob){ this.dob = dob; }
-//	public void setAge(int age){ this.age = age; }
+	public void setDOB(Date DOB) { this.DOB = DOB; }
 	public String getId(){ return id; }
 	public Date getAdmittedDate(){ return admittedDate; }
 	public Date getDischargedDate(){ return dischargedDate; }
 	public Doctor getPhysician(){ return physician; }
-	public Date getDob(){ return dob; }
-//	public int getAge(){ return this.age; }
+	public Date getDOB() { return DOB; }
+	
+	//Derived Attributes
+	public int getAge(){
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+	    LocalDateTime now = LocalDateTime.now();
+	    int y = now.getYear();
+	    int d = now.getDayOfYear();
+	    int ageYear = y - this.DOB.getYear();
+	    if (d<this.DOB.getDayOfYear()){
+	        ageYear --;
+	    }
+	    return ageYear;
+	}
 }

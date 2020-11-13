@@ -6,7 +6,9 @@ public class Doctor extends Person {
 		super(firstName, lastName);
 		setSpecialty(specialty);
 	}
-	
+	public String toString(){
+		return super.toString() + " - " + specialty;
+	}
 	//getters and setters
 	public String getSpecialty() { return specialty; }
 	public void setSpecialty(String specialty) { this.specialty = specialty; }

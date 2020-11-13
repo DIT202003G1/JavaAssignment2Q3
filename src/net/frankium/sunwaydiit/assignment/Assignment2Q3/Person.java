@@ -1,10 +1,13 @@
 package net.frankium.sunwaydiit.assignment.Assignment2Q3;
 
 public class Person {
-	private String firstName, lastName;
+	protected String firstName, lastName;
 	public Person(String firstName,String lastName){
 		this.setFirstName(firstName);
-		this.setFirstName(lastName);
+		this.setLastName(lastName);
+	}
+	public String toString() {
+		return firstName + " " + lastName;
 	}
 	//setters and getters
 	public String getFirstName(){ return this.firstName; }
