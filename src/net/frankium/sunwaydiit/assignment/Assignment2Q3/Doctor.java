@@ -6,6 +6,8 @@ public class Doctor extends Person {
 		super(firstName, lastName);
 		setSpecialty(specialty);
 	}
+	
+	@Override
 	public String toString(){
 		return super.toString() + " - " + specialty;
 	}

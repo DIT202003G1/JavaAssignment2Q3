@@ -16,6 +16,7 @@ public class Patient extends Person {
 		setDischargedDate(dischargedDate);
 	}
 	
+	@Override
 	public String toString(){
         return "Patient: " + super.toString() + "\n"
                + "Attending Physician: " + physician.toString()
